@@ -1,20 +1,22 @@
 package handlers
 
 import (
-	"encoding/json"
 	"log"
 	"net/http"
 	"os"
 
 	"github.com/daichi-sato-design/gae-test/conf"
+	"github.com/daichi-sato-design/gae-test/utils"
 	"github.com/gorilla/mux"
 	"github.com/rs/cors"
 )
 
 // Response return json
 type Response struct {
-    Status  string `json:"status"`
-    Message string `json:"message"`
+    Port  string `json:"port"`
+		Logfile string `json:"logfile"`
+		URL string `json:"api_url"`
+		Message string `json:"message"`
 }
 
 // Handlers this app handler functions
@@ -32,5 +34,10 @@ func Handlers(){
 }
 
 func handle(w http.ResponseWriter, r *http.Request) {
-    json.NewEncoder(w).Encode(Response{Status: "ok", Message: "Hello world."})
+	utils.Respond(w,http.StatusOK,Response{
+		Port: conf.Config.Port, 
+		Logfile: conf.Config.LogFile, 
+		URL: conf.Config.APIURL, 
+		Message:"Hi! this is GAE test app by golang.",
+	})
 }

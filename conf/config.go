@@ -5,18 +5,12 @@ import (
 	"log"
 	"os"
 
+	"github.com/daichi-sato-design/gae-test/domain"
 	"github.com/daichi-sato-design/gae-test/utils"
 )
 
 // Config 設定リストのグローバル変数
-var Config SettingConfig
-
-// SettingConfig 設定リストのモデル
-type SettingConfig struct{
-  Port             string `json:"port"`
-  LogFile          string `json:"logfile"`
-  APIURL           string `json:"api_url"`
-}
+var Config *domain.SettingConfig
 
 func init(){
   LoadConfig()
