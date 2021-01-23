@@ -9,7 +9,7 @@ GAE で Go アプリケーションを起動するテストアプリです。
 
 ### アプリの起動
 
-#### go run main.go
+#### $ go run main.go
 
 GAE のデプロイするための設定を確認してください。<br/>
 Google Cloud Platform SDK のインストール済みを想定しています。<br/>
@@ -33,6 +33,6 @@ GAE には Standard Environment と Flexible Environment という２つの実�
 
 ### アプリのデプロイ
 
-app.yaml を<a href="">この記事</a>を参考に作成しコマンドを実行してください。
+app.yaml を<a href="https://cloud.google.com/appengine/docs/standard/go/config/appref?hl=ja">この記事</a>を参考に作成しコマンドを実行してください。
 
 #### $ gcloud app deploy
