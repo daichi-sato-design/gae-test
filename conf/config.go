@@ -4,9 +4,11 @@ import (
 	"encoding/json"
 	"log"
 	"os"
+
+	"github.com/daichi-sato-design/gae-test/utils"
 )
 
-// Conf 設定リストのグローバル変数
+// Config 設定リストのグローバル変数
 var Config SettingConfig
 
 // SettingConfig 設定リストのモデル
@@ -18,16 +20,17 @@ type SettingConfig struct{
 
 func init(){
   LoadConfig()
+  utils.LoggingSettings(Config.LogFile)
 }
 
 // LoadConfig iniファイルから設定を読み込み、グローバル変数に代入する
 func LoadConfig(){
-  configFilePath := "./config.json"
+  configFilePath := "./conf.json"
   f, err := os.Open(configFilePath)
+  defer f.Close()
   if err != nil {
     log.Fatal("loadConfig os.Open err:", err)
   }
-  defer f.Close()
 
   err = json.NewDecoder(f).Decode(&Config)
   if err != nil{
