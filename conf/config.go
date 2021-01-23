@@ -14,7 +14,10 @@ var Config *domain.SettingConfig
 
 func init(){
   LoadConfig()
-  utils.LoggingSettings(Config.LogFile)
+  ENV := os.Getenv("ENV")
+  if ENV == ""{
+    utils.LoggingSettings(Config.LogFile)
+  }
 }
 
 // LoadConfig iniファイルから設定を読み込み、グローバル変数に代入する
