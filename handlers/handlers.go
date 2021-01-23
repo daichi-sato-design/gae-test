@@ -6,7 +6,7 @@ import (
 	"net/http"
 	"os"
 
-	"github.com/daichi-sato-desin/gae-test/conf"
+	"github.com/daichi-sato-design/gae-test/conf"
 	"github.com/gorilla/mux"
 	"github.com/rs/cors"
 )
